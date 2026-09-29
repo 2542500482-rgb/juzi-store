@@ -13,7 +13,7 @@
 <img src="product.jpg" class="product">
 
 <h2>Apple 礼品卡</h2>
-<p>付款后自动发货</p>
+<p>联系客服下单｜支持微信、支付宝</p>
 
 <select id="spec">
 <option>10美元</option>
@@ -24,9 +24,15 @@
 
 <input id="email" type="email" placeholder="请输入收货邮箱">
 
-<h3>支付方式</h3>
+<button onclick="submitOrder()">提交订单</button>
 
-<div class="pay-box">
+<div id="orderBox"></div>
+
+<div class="pay">
+<h3>付款方式</h3>
+
+<div class="pay-grid">
+
 <div class="pay-item">
 <img src="wechat-pay.jpg">
 <p>微信支付</p>
@@ -34,17 +40,16 @@
 
 <div class="pay-item">
 <img src="alipay-pay.jpg">
-<p>支付宝</p>
-</div>
+<p>支付宝支付</p>
 </div>
 
-<button onclick="finish()">我已完成付款</button>
+</div>
 
-<div id="result"></div>
+</div>
 
 <div class="contact">
 <a href="https://t.me/juhentian" target="_blank">TG：@juhentian</a>
-<a href="weixin://">微信：18518541201</a>
+<a href="#">微信：18518541201</a>
 </div>
 
 </div>
