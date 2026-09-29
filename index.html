@@ -2,298 +2,163 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🍎橘子商城</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>商城自动发货</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
 body{
+margin:0;
 font-family:-apple-system,BlinkMacSystemFont;
-background:#f3f3f3;
-color:#222;
-}
-.header{
-background:#ff6a00;
-padding:20px;
-color:white;
-position:sticky;
-top:0;
-}
-.header h1{
-font-size:28px;
-margin-bottom:8px;
-}
-.nav{
-display:flex;
-gap:18px;
-font-size:18px;
-}
-.nav a{
-color:white;
-text-decoration:none;
-}
-.banner{
-background:linear-gradient(135deg,#ff8a00,#ff4d4d);
-padding:35px 20px;
-color:white;
-}
-.banner h2{
-font-size:36px;
-line-height:1.2;
-}
-.banner p{
-margin-top:15px;
-font-size:20px;
-}
-.container{
-padding:15px;
-}
-.card{
-background:white;
-border-radius:22px;
-padding:18px;
-margin-bottom:16px;
-box-shadow:0 8px 20px rgba(0,0,0,.06);
-}
-.item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-}
-.left{
-display:flex;
-gap:12px;
-align-items:center;
-}
-.icon{
-width:60px;
-height:60px;
 background:#f5f5f5;
-border-radius:16px;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:34px;
 }
-.tag{
-display:inline-block;
-background:#e8f3ff;
-color:#2b7de9;
-padding:5px 10px;
-border-radius:20px;
-font-size:13px;
-margin-top:6px;
+.box{
+max-width:480px;
+margin:20px auto;
+background:white;
+padding:20px;
+border-radius:15px;
 }
-.price{
-font-size:32px;
-font-weight:bold;
-}
-.buy{
-display:inline-block;
-margin-top:10px;
-background:#ff6a00;
-color:white;
-padding:10px 22px;
-border-radius:12px;
-text-decoration:none;
-font-size:17px;
-}
-select,input{
+img{
 width:100%;
-padding:13px;
-border:1px solid #ddd;
+border-radius:12px;
+}
+input,select,button{
+width:100%;
+padding:14px;
+margin-top:12px;
 border-radius:10px;
-margin-top:10px;
+border:1px solid #ddd;
 font-size:16px;
 }
-.footer{
+button{
+background:#07c160;
+color:white;
+border:none;
+font-weight:bold;
+}
+a{
+text-decoration:none;
+}
+.customer{
+display:flex;
+gap:10px;
+margin-top:15px;
+}
+.customer a{
+flex:1;
 text-align:center;
-padding:30px;
-color:#888;
+padding:12px;
+border-radius:10px;
+color:white;
+}
+.wx{background:#07c160;}
+.tg{background:#229ED9;}
+#pay,#success{
+display:none;
 }
 </style>
-
 </head>
+
 <body>
 
-<div class="header">
-<h1>🍎 橘子商城</h1>
+<div class="box" id="shop">
 
-<div class="nav">
-<a href="#">Apple ID</a>
-<a href="#">礼品卡</a>
-<a href="#">会员</a>
-<a href="#">联系</a>
-</div>
-</div>
+<img src="https://picsum.photos/500/500" alt="商品">
 
-<div class="banner">
-<h2>美国 Apple ID · 礼品卡 · 数字会员</h2>
-<p>稳定、安全、快速发货</p>
-</div>
+<h2>Apple 礼品卡</h2>
 
-<div class="container">
-
-<div class="card">
-
-<div class="item">
-
-<div class="left">
-
-<div class="icon">📱</div>
-
-<div>
-<h3>Apple 各地区 ID 🚀</h3>
-
-<div class="tag">自动交付</div>
-
-</div>
-
-</div>
-
-<div class="price">¥35</div>
-
-</div>
-
-<div style="margin-top:15px;">
-
-<label>选择规格</label>
+<p>自动发货｜付款后秒发邮箱</p>
 
 <select id="spec">
-<option>🇺🇸 美区 Apple ID ¥35</option>
-<option>🇭🇰 港区 Apple ID ¥38</option>
-<option>🇯🇵 日区 Apple ID ¥36</option>
-<option>📥 下载专用ID ¥12</option>
+<option>10美元</option>
+<option>25美元</option>
+<option>50美元</option>
+<option>100美元</option>
 </select>
 
-<label>收货邮箱</label>
+<input id="email" placeholder="请输入收货邮箱">
 
-<input id="email" type="email" placeholder="请输入邮箱">
+<button onclick="pay()">立即购买</button>
 
-<a href="#" class="buy" onclick="goPay()">立即购买</a>
+<div class="customer">
 
-</div>
+<a class="wx" href="weixin://">微信客服</a>
 
-</div>
-
-<div class="card">
-<div class="item">
-<div class="left">
-<div class="icon">🎁</div>
-<div>
-<h3>$10 Apple 礼品卡</h3>
-</div>
-</div>
-<div class="price">¥78</div>
-</div>
-<a href="#" class="buy" onclick="goGift('$10 礼品卡','78')">购买</a>
-</div>
-
-<div class="card">
-<div class="item">
-<div class="left">
-<div class="icon">🎁</div>
-<div>
-<h3>$25 Apple 礼品卡</h3>
-</div>
-</div>
-<div class="price">¥185</div>
-</div>
-<a href="#" class="buy" onclick="goGift('$25 礼品卡','185')">购买</a>
-</div>
-
-<div class="card">
-<div class="item">
-<div class="left">
-<div class="icon">🎁</div>
-<div>
-<h3>$50 Apple 礼品卡</h3>
-</div>
-</div>
-<div class="price">¥365</div>
-</div>
-<a href="#" class="buy" onclick="goGift('$50 礼品卡','365')">购买</a>
-</div>
-
-<div class="card">
-<div class="item">
-<div class="left">
-<div class="icon">🎬</div>
-<div>
-<h3>Netflix</h3>
-</div>
-</div>
-<div class="price">¥25/月</div>
-</div>
-<a href="#" class="buy" onclick="goGift('Netflix','25/月')">购买</a>
-</div>
-
-<div class="card">
-<div class="item">
-<div class="left">
-<div class="icon">🎵</div>
-<div>
-<h3>Spotify Premium</h3>
-</div>
-</div>
-<div class="price">¥18/月</div>
-</div>
-<a href="#" class="buy" onclick="goGift('Spotify Premium','18/月')">购买</a>
-</div>
-
-<div class="card">
-<div class="item">
-<div class="left">
-<div class="icon">▶️</div>
-<div>
-<h3>YouTube Premium</h3>
-</div>
-</div>
-<div class="price">¥20/月</div>
-</div>
-<a href="#" class="buy" onclick="goGift('YouTube Premium','20/月')">购买</a>
-</div>
-
-<div class="card">
-
-<h2>联系客服</h2>
-
-<p>📱 微信：18518541201</p>
-
-<p>✈️ Telegram：@
-  jujuhentian</p>
-
-<a href="https://t.me/18518541201" class="buy">Telegram 联系</a>
+<a class="tg" href="https://t.me/juhentian">TG客服</a>
 
 </div>
 
+<p style="text-align:center;font-size:13px;color:#888;">
+微信：18518541201
+</p>
+
 </div>
 
-<div class="footer">
-©2026 橘子商城
+<div class="box" id="pay">
+
+<h2>扫码付款</h2>
+
+<p>把下面图片换成你的微信或支付宝收款码</p>
+
+<img src="https://picsum.photos/400/400" alt="收款码">
+
+<button onclick="success()">我已完成付款</button>
+
+</div>
+
+<div class="box" id="success">
+
+<h2 style="color:#07c160;">支付成功</h2>
+
+<p>发货方式：自动发送到邮箱</p>
+
+<p id="info"></p>
+
+<div class="customer">
+
+<a class="wx" href="weixin://">微信客服</a>
+
+<a class="tg" href="https://t.me/juhentian">TG客服</a>
+
+</div>
+
 </div>
 
 <script>
-function goPay(){
 
-const email=document.getElementById("email").value.trim();
+function pay(){
 
-if(email===""){
-alert("请输入收货邮箱");
+const email=document.getElementById("email").value;
+
+if(email==""){
+alert("请输入邮箱");
 return;
 }
 
+document.getElementById("shop").style.display="none";
+document.getElementById("pay").style.display="block";
+
+}
+
+function success(){
+
+const email=document.getElementById("email").value;
+
 const spec=document.getElementById("spec").value;
 
-location.href="pay.html?product="+encodeURIComponent(spec)+"&email="+encodeURIComponent(email);
+document.getElementById("pay").style.display="none";
+document.getElementById("success").style.display="block";
+
+document.getElementById("info").innerHTML=
+`
+商品：${spec}<br><br>
+收货邮箱：${email}<br><br>
+下载链接：https://你的域名/download<br><br>
+提取码：8888
+`;
 
 }
 
-function goGift(name,price){
-
-location.href="pay.html?product="+encodeURIComponent(name)+"&price="+encodeURIComponent(price);
-
-}
 </script>
 
 </body>
