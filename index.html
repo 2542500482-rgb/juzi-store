@@ -2,72 +2,18 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>商城自动发货</title>
-
-<style>
-body{
-margin:0;
-font-family:-apple-system,BlinkMacSystemFont;
-background:#f5f5f5;
-}
-.box{
-max-width:480px;
-margin:20px auto;
-background:white;
-padding:20px;
-border-radius:15px;
-}
-img{
-width:100%;
-border-radius:12px;
-}
-input,select,button{
-width:100%;
-padding:14px;
-margin-top:12px;
-border-radius:10px;
-border:1px solid #ddd;
-font-size:16px;
-}
-button{
-background:#07c160;
-color:white;
-border:none;
-font-weight:bold;
-}
-a{
-text-decoration:none;
-}
-.customer{
-display:flex;
-gap:10px;
-margin-top:15px;
-}
-.customer a{
-flex:1;
-text-align:center;
-padding:12px;
-border-radius:10px;
-color:white;
-}
-.wx{background:#07c160;}
-.tg{background:#229ED9;}
-#pay,#success{
-display:none;
-}
-</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apple 礼品卡商城</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="box" id="shop">
+<div class="card">
 
-<img src="https://picsum.photos/500/500" alt="商品">
+<img src="product.jpg" class="product">
 
 <h2>Apple 礼品卡</h2>
-
-<p>自动发货｜付款后秒发邮箱</p>
+<p>付款后自动发货</p>
 
 <select id="spec">
 <option>10美元</option>
@@ -76,90 +22,34 @@ display:none;
 <option>100美元</option>
 </select>
 
-<input id="email" placeholder="请输入收货邮箱">
+<input id="email" type="email" placeholder="请输入收货邮箱">
 
-<button onclick="pay()">立即购买</button>
+<h3>支付方式</h3>
 
-<div class="customer">
-
-<a class="wx" href="weixin://">微信客服</a>
-
-<a class="tg" href="https://t.me/juhentian">TG客服</a>
-
+<div class="pay-box">
+<div class="pay-item">
+<img src="wechat-pay.jpg">
+<p>微信支付</p>
 </div>
 
-<p style="text-align:center;font-size:13px;color:#888;">
-微信：18518541201
-</p>
-
+<div class="pay-item">
+<img src="alipay-pay.jpg">
+<p>支付宝</p>
+</div>
 </div>
 
-<div class="box" id="pay">
+<button onclick="finish()">我已完成付款</button>
 
-<h2>扫码付款</h2>
+<div id="result"></div>
 
-<p>把下面图片换成你的微信或支付宝收款码</p>
-
-<img src="https://picsum.photos/400/400" alt="收款码">
-
-<button onclick="success()">我已完成付款</button>
-
-</div>
-
-<div class="box" id="success">
-
-<h2 style="color:#07c160;">支付成功</h2>
-
-<p>发货方式：自动发送到邮箱</p>
-
-<p id="info"></p>
-
-<div class="customer">
-
-<a class="wx" href="weixin://">微信客服</a>
-
-<a class="tg" href="https://t.me/juhentian">TG客服</a>
-
+<div class="contact">
+<a href="https://t.me/juhentian" target="_blank">TG：@juhentian</a>
+<a href="weixin://">微信：18518541201</a>
 </div>
 
 </div>
 
-<script>
-
-function pay(){
-
-const email=document.getElementById("email").value;
-
-if(email==""){
-alert("请输入邮箱");
-return;
-}
-
-document.getElementById("shop").style.display="none";
-document.getElementById("pay").style.display="block";
-
-}
-
-function success(){
-
-const email=document.getElementById("email").value;
-
-const spec=document.getElementById("spec").value;
-
-document.getElementById("pay").style.display="none";
-document.getElementById("success").style.display="block";
-
-document.getElementById("info").innerHTML=
-`
-商品：${spec}<br><br>
-收货邮箱：${email}<br><br>
-下载链接：https://你的域名/download<br><br>
-提取码：8888
-`;
-
-}
-
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
