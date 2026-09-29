@@ -3,136 +3,297 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>橘子商城</title>
-<link rel="stylesheet" href="style.css">
+<title>🍎橘子商城</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+font-family:-apple-system,BlinkMacSystemFont;
+background:#f3f3f3;
+color:#222;
+}
+.header{
+background:#ff6a00;
+padding:20px;
+color:white;
+position:sticky;
+top:0;
+}
+.header h1{
+font-size:28px;
+margin-bottom:8px;
+}
+.nav{
+display:flex;
+gap:18px;
+font-size:18px;
+}
+.nav a{
+color:white;
+text-decoration:none;
+}
+.banner{
+background:linear-gradient(135deg,#ff8a00,#ff4d4d);
+padding:35px 20px;
+color:white;
+}
+.banner h2{
+font-size:36px;
+line-height:1.2;
+}
+.banner p{
+margin-top:15px;
+font-size:20px;
+}
+.container{
+padding:15px;
+}
+.card{
+background:white;
+border-radius:22px;
+padding:18px;
+margin-bottom:16px;
+box-shadow:0 8px 20px rgba(0,0,0,.06);
+}
+.item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+.left{
+display:flex;
+gap:12px;
+align-items:center;
+}
+.icon{
+width:60px;
+height:60px;
+background:#f5f5f5;
+border-radius:16px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+}
+.tag{
+display:inline-block;
+background:#e8f3ff;
+color:#2b7de9;
+padding:5px 10px;
+border-radius:20px;
+font-size:13px;
+margin-top:6px;
+}
+.price{
+font-size:32px;
+font-weight:bold;
+}
+.buy{
+display:inline-block;
+margin-top:10px;
+background:#ff6a00;
+color:white;
+padding:10px 22px;
+border-radius:12px;
+text-decoration:none;
+font-size:17px;
+}
+select,input{
+width:100%;
+padding:13px;
+border:1px solid #ddd;
+border-radius:10px;
+margin-top:10px;
+font-size:16px;
+}
+.footer{
+text-align:center;
+padding:30px;
+color:#888;
+}
+</style>
+
 </head>
 <body>
 
-<header>
-<div class="logo">🍎 橘子商城</div>
-<nav>
-<aHTML="#id">Apple ID</a>
-<a href="#gift">礼品卡</a>
-<a href="#vip">会员</a>
-<a href="#contact">联系</a>
-</nav>
-</header>
+<div class="header">
+<h1>🍎 橘子商城</h1>
 
-<section class="hero">
-<h1>美国 Apple ID · 礼品卡 · 数字会员</h1>
+<div class="nav">
+<a href="#">Apple ID</a>
+<a href="#">礼品卡</a>
+<a href="#">会员</a>
+<a href="#">联系</a>
+</div>
+</div>
+
+<div class="banner">
+<h2>美国 Apple ID · 礼品卡 · 数字会员</h2>
 <p>稳定、安全、快速发货</p>
-<a href="#id" class="btn">立即购买</a>
-</section>
+</div>
 
-<section id="id" class="products">
-<h2>美区 Apple ID</h2>
-
-<div class="grid">
+<div class="container">
 
 <div class="card">
-<AsyncImage query="Apple ID account illustration" aspectRatio="1:1"/>
-<h3>美区 Apple ID</h3>
-<p>独享账号 · 永久使用</p>
-<span>¥35</span>
-<a href="#contact">购买</a>
+
+<div class="item">
+
+<div class="left">
+
+<div class="icon">📱</div>
+
+<div>
+<h3>Apple 各地区 ID 🚀</h3>
+
+<div class="tag">自动交付</div>
+
+</div>
+
+</div>
+
+<div class="price">¥35</div>
+
+</div>
+
+<div style="margin-top:15px;">
+
+<label>选择规格</label>
+
+<select id="spec">
+<option>🇺🇸 美区 Apple ID ¥35</option>
+<option>🇭🇰 港区 Apple ID ¥38</option>
+<option>🇯🇵 日区 Apple ID ¥36</option>
+<option>📥 下载专用ID ¥12</option>
+</select>
+
+<label>收货邮箱</label>
+
+<input id="email" type="email" placeholder="请输入邮箱">
+
+<a href="#" class="buy" onclick="goPay()">立即购买</a>
+
+</div>
+
 </div>
 
 <div class="card">
-<AsyncImage query="Apple ID account illustration" aspectRatio="1:1"/>
-<h3>共享 Apple ID</h3>
-<p>适合下载 App</p>
-<span>¥12</span>
-<a href="#contact">购买</a>
+<div class="item">
+<div class="left">
+<div class="icon">🎁</div>
+<div>
+<h3>$10 Apple 礼品卡</h3>
 </div>
-
 </div>
-</section>
-
-<section id="gift" class="products">
-<h2>Apple 礼品卡</h2>
-
-<div class="grid">
-
-<div class="card">
-<AsyncImage query="Apple Gift Card" aspectRatio="1:1"/>
-<h3>$10 礼品卡</h3>
-<span>¥78</span>
-<a href="#contact">购买</a>
+<div class="price">¥78</div>
+</div>
+<a href="#" class="buy" onclick="goGift('$10 礼品卡','78')">购买</a>
 </div>
 
 <div class="card">
-<AsyncImage query="Apple Gift Card" aspectRatio="1:1"/>
-<h3>$25 礼品卡</h3>
-<span>¥185</span>
-<a href="#contact">购买</a>
+<div class="item">
+<div class="left">
+<div class="icon">🎁</div>
+<div>
+<h3>$25 Apple 礼品卡</h3>
+</div>
+</div>
+<div class="price">¥185</div>
+</div>
+<a href="#" class="buy" onclick="goGift('$25 礼品卡','185')">购买</a>
 </div>
 
 <div class="card">
-<AsyncImage query="Apple Gift Card" aspectRatio="1:1"/>
-<h3>$50 礼品卡</h3>
-<span>¥365</span>
-<a href="#contact">购买</a>
+<div class="item">
+<div class="left">
+<div class="icon">🎁</div>
+<div>
+<h3>$50 Apple 礼品卡</h3>
 </div>
-
 </div>
-</section>
-
-<section id="vip" class="products">
-<h2>数字会员</h2>
-
-<div class="grid">
+<div class="price">¥365</div>
+</div>
+<a href="#" class="buy" onclick="goGift('$50 礼品卡','365')">购买</a>
+</div>
 
 <div class="card">
-<AsyncImage query="Netflix logo" aspectRatio="1:1"/>
+<div class="item">
+<div class="left">
+<div class="icon">🎬</div>
+<div>
 <h3>Netflix</h3>
-<span>¥25/月</span>
-<a href="#contact">购买</a>
+</div>
+</div>
+<div class="price">¥25/月</div>
+</div>
+<a href="#" class="buy" onclick="goGift('Netflix','25/月')">购买</a>
 </div>
 
 <div class="card">
-<AsyncImage query="Spotify Premium logo" aspectRatio="1:1"/>
+<div class="item">
+<div class="left">
+<div class="icon">🎵</div>
+<div>
 <h3>Spotify Premium</h3>
-<span>¥18/月</span>
-<a href="#contact">购买</a>
+</div>
+</div>
+<div class="price">¥18/月</div>
+</div>
+<a href="#" class="buy" onclick="goGift('Spotify Premium','18/月')">购买</a>
 </div>
 
 <div class="card">
-<AsyncImage query="YouTube Premium logo" aspectRatio="1:1"/>
+<div class="item">
+<div class="left">
+<div class="icon">▶️</div>
+<div>
 <h3>YouTube Premium</h3>
-<span>¥20/月</span>
-<a href="#contact">购买</a>
+</div>
+</div>
+<div class="price">¥20/月</div>
+</div>
+<a href="#" class="buy" onclick="goGift('YouTube Premium','20/月')">购买</a>
 </div>
 
-</div>
-</section>
+<div class="card">
 
-<section class="why">
-<h2>为什么选择我们</h2>
-
-<div class="features">
-
-<div>⚡ 秒发货</div>
-<div>🔒 独享账号</div>
-<div>💯 售后支持</div>
-<div>📱 手机下单</div>
-
-</div>
-</section>
-
-<section id="contact" class="contact">
 <h2>联系客服</h2>
 
-<p>微信：18518541201</p>
+<p>📱 微信：18518541201</p>
 
-<p>Telegram：@your_tg</p>
+<p>✈️ Telegram：@18518541201</p>
 
-<a class="btn" href="https://t.me/your_tg">Telegram 联系</a>
+<a href="https://t.me/18518541201" class="buy">Telegram 联系</a>
 
-</section>
+</div>
 
-<footer>
+</div>
+
+<div class="footer">
 ©2026 橘子商城
-</footer>
+</div>
+
+<script>
+function goPay(){
+
+const email=document.getElementById("email").value.trim();
+
+if(email===""){
+alert("请输入收货邮箱");
+return;
+}
+
+const spec=document.getElementById("spec").value;
+
+location.href="pay.html?product="+encodeURIComponent(spec)+"&email="+encodeURIComponent(email);
+
+}
+
+function goGift(name,price){
+
+location.href="pay.html?product="+encodeURIComponent(name)+"&price="+encodeURIComponent(price);
+
+}
+</script>
 
 </body>
 </html>
